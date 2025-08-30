@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #ffecd2, #fcb69f, #ffdde1, #c2e9fb, #d4fc79, #96e6a1);
+      background-size: 600% 600%;
+      animation: gradientShift 20s ease infinite;
+      color: #333;
+      text-align: center;
+      overflow-x: hidden;
+      position: relative;
+      padding: 40px 20px;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      25% { background-position: 50% 50%; }
+      50% { background-position: 100% 50%; }
+      75% { background-position: 50% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin: 40px 0 20px 0;
+      animation: fadeIn 2s ease-in-out;
+      color: #ff4081;
+      text-shadow: 0px 0px 10px rgba(255, 150, 200, 0.6);
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin: 20px auto 50px auto;
+      max-width: 700px;
+      line-height: 1.8;
+      animation: fadeIn 3s ease-in-out;
+      color: #444;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 20px auto;
+      padding: 14px 30px;
+      font-size: 1.1rem;
+      background: #ff80ab;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.3s;
+      box-shadow: 0 0 15px rgba(255, 128, 171, 0.8);
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      background: #ff4081;
+      box-shadow: 0 0 25px rgba(255, 64, 129, 1);
+    }
+
+    .hidden-message {
+      display: none;
+      font-size: 1.5rem;
+      margin: 40px auto;
+      animation: fadeIn 2s ease-in-out;
+      color: #e91e63;
+      text-shadow: 0px 0px 12px rgba(255,150,200,0.7);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Confetti */
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background-color: red;
+      top: -10px;
+      animation: fall 3s linear forwards;
+    }
+
+    @keyframes fall {
+      to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    }
+
+    /* Balloons */
+    .balloon {
+      position: fixed;
+      bottom: -150px;
+      width: 60px;
+      height: 80px;
+      border-radius: 50%;
+      animation: float 12s infinite;
+      box-shadow: 0px 0px 20px rgba(255,255,255,0.6);
+      z-index: -1;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0); }
+      100% { transform: translateY(-120vh) rotate(360deg); }
+    }
+
+    /* Flowers */
+    .flower {
+      position: fixed;
+      bottom: -100px;
+      width: 40px;
+      height: 40px;
+      background: radial-gradient(circle at center, #ffb6c1 40%, #ff69b4 100%);
+      border-radius: 50%;
+      box-shadow: 
+        -20px -20px 0 -10px #ffb6c1,
+        20px -20px 0 -10px #ffb6c1,
+        -20px 20px 0 -10px #ffb6c1,
+        20px 20px 0 -10px #ffb6c1,
+        0 0 20px rgba(255,182,193,0.8);
+      animation: bloom 18s infinite;
+      z-index: -1;
+    }
+
+    @keyframes bloom {
+      0% { transform: translateY(0) rotate(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-120vh) rotate(360deg) scale(1.2); opacity: 0; }
+    }
+
+    /* Rainbow */
+    .rainbow {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 300px;
+      border-radius: 50% 50% 0 0;
+      background: conic-gradient(red, orange, yellow, green, skyblue, blue, violet);
+      opacity: 0.3;
+      filter: blur(4px);
+      z-index: -2;
+    }
+
+    /* Gallery */
+    .gallery {
+      margin: 60px auto;
+      max-width: 90%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 0px 30px rgba(0,0,0,0.4);
+    }
+
+    /* Birthday Cake */
+    .cake {
+      position: relative;
+      margin: 70px auto;
+      width: 220px;
+      height: 160px;
+    }
+
+    .cake-base {
+      width: 220px;
+      height: 110px;
+      background: #ff80ab;
+      border-radius: 0 0 25px 25px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      position: absolute;
+      bottom: 0;
+    }
+
+    .cake-top {
+      width: 180px;
+      height: 55px;
+      background: #ffd1dc;
+      border-radius: 20px;
+      position: absolute;
+      top: 0;
+      left: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+
+    .candle {
+      position: absolute;
+      width: 12px;
+      height: 45px;
+      background: #fff;
+      top: -45px;
+      border-radius: 2px;
+      box-shadow: 0 0 5px rgba(255,255,255,0.8);
+    }
+
+    .flame {
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 22px;
+      background: radial-gradient(circle at center, #ff0 30%, orange 70%, transparent 100%);
+      border-radius: 50%;
+      animation: flicker 0.25s infinite alternate;
+      box-shadow: 0 0 18px yellow;
+    }
+
+    @keyframes flicker {
+      from { transform: translateX(-50%) scale(1); opacity: 1; }
+      to { transform: translateX(-50%) scale(1.2); opacity: 0.85; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎉 💗🌷𝓗𝓪𝓹𝓹𝔂 𝓑𝓲𝓻𝓽𝓱𝓭𝓪𝔂!!🌷💗 Harshita(Hersheys🍫) 🎂</h1>
+  <p>
+    On this bright and joyful day, I just want to remind you how wonderful you are.  
+    You light everyone's life with your smile, and I feel so lucky to have you.  
+    May your day be filled with love, laughter, and sweet surprises 💕
+  </p>
+
+  <!-- Surprise Button -->
+  <button class="btn" onclick="showMessage()">Click for a Surprise 🎁</button>
+
+  <!-- Music Control Button -->
+  <button class="btn" onclick="toggleMusic()" id="musicBtn">Play Music 🎵</button>
+
+  <div class="hidden-message" id="hiddenMessage">
+    I know it's just a start..!!But I hope everything goes fine. ☀️🌸  
+    Wishing you endless happiness and love today & always!
+  </div>
+
+  <!-- Gallery Section -->
+  <div class="gallery">
+    <img src="her copy.png" alt="Memory 1">
+    <img src="her2.jpeg" alt="Memory 2">
+    <img src="her3.jpeg" alt="Memory 3">
+  </div>
+
+  <!-- Birthday Cake -->
+  <div class="cake">
+    <div class="cake-top"></div>
+    <div class="cake-base"></div>
+    <div class="candle" style="left:60px;">
+      <div class="flame"></div>
+    </div>
+    <div class="candle" style="left:95px;">
+      <div class="flame"></div>
+    </div>
+    <div class="candle" style="left:130px;">
+      <div class="flame"></div>
+    </div>
+  </div>
+
+  <!-- Background Music -->
+  <audio id="bg-music" loop>
+    <source src="happy-birthday-357371 copy.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Balloons -->
+  <div class="balloon" style="left:10%; background:#ffccff; animation-duration: 13s;"></div>
+  <div class="balloon" style="left:30%; background:#ffd1dc; animation-duration: 15s;"></div>
+  <div class="balloon" style="left:50%; background:#c2e9fb; animation-duration: 11s;"></div>
+  <div class="balloon" style="left:70%; background:#ffb6c1; animation-duration: 14s;"></div>
+  <div class="balloon" style="left:90%; background:#ffe4e1; animation-duration: 12s;"></div>
+
+  <!-- Flowers -->
+  <div class="flower" style="left:15%; animation-duration: 17s;"></div>
+  <div class="flower" style="left:40%; animation-duration: 20s;"></div>
+  <div class="flower" style="left:65%; animation-duration: 22s;"></div>
+  <div class="flower" style="left:80%; animation-duration: 19s;"></div>
+  <div class="flower" style="left:25%; animation-duration: 24s;"></div>
+
+  <!-- Rainbow -->
+  <div class="rainbow"></div>
+
+  <script>
+    function showMessage() {
+      document.getElementById("hiddenMessage").style.display = "block";
+    }
+
+    const music = document.getElementById("bg-music");
+    const musicBtn = document.getElementById("musicBtn");
+
+    function toggleMusic() {
+      if (music.paused) {
+        music.play();
+        musicBtn.textContent = "Pause Music ⏸️";
+      } else {
+        music.pause();
+        musicBtn.textContent = "Play Music 🎵";
+      }
+    }
+
+    // 🎉 Confetti Burst on Page Load
+    window.onload = () => {
+      for (let i = 0; i < 150; i++) {
+        const confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        confetti.style.animationDuration = (Math.random() * 2 + 2) + "s";
+        document.body.appendChild(confetti);
+
+        setTimeout(() => {
+          confetti.remove();
+        }, 3000);
+      }
+    };
+  </script>
+</body>
+</html>
